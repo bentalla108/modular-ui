@@ -40,9 +40,7 @@ class __SliderState extends State<_Slider> {
             max: 100,
             thumbColor: Colors.white,
             onChanged: (value) {
-              setState(() {
-                print(value);
-              });
+              setState(() {});
             },
           ),
           const SizedBox(height: 15),

@@ -22,7 +22,10 @@ class MUIPrimaryButton extends StatefulWidget {
     this.actionIcon,
     this.iconColor = Colors.white,
     this.boxShadows,
+    this.mainAxisSize = MainAxisSize.min,
   }) : super(key: key);
+
+  final MainAxisSize mainAxisSize;
 
   /// The Text to display inside the button.
   final String text;
@@ -126,31 +129,35 @@ class _PrimaryButtonState extends State<MUIPrimaryButton> {
             vertical: 16,
           ),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (widget.leadingIcon != null)
-              Icon(
-                widget.leadingIcon,
-                color: widget.iconColor,
-                size: 12,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 8, bottom: 8),
+          child: Row(
+            mainAxisSize: widget.mainAxisSize,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (widget.leadingIcon != null)
+                Icon(
+                  widget.leadingIcon,
+                  color: widget.iconColor,
+                  size: 12,
+                ),
+              SizedBox(width: widget.leadingIcon != null ? 8.0 : 0.0),
+              Text(
+                widget.text,
+                style: TextStyle(
+                  color: widget.textColor,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            SizedBox(width: widget.leadingIcon != null ? 8.0 : 0.0),
-            Text(
-              widget.text,
-              style: TextStyle(
-                color: widget.textColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(width: widget.actionIcon != null ? 8.0 : 0.0),
-            if (widget.actionIcon != null)
-              Icon(
-                widget.actionIcon,
-                color: widget.iconColor,
-                size: 12,
-              ),
-          ],
+              SizedBox(width: widget.actionIcon != null ? 8.0 : 0.0),
+              if (widget.actionIcon != null)
+                Icon(
+                  widget.actionIcon,
+                  color: widget.iconColor,
+                  size: 12,
+                ),
+            ],
+          ),
         ),
       ),
     );

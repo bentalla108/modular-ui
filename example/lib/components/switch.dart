@@ -8,9 +8,7 @@ Widget switchComponent() {
 }
 
 class _Switches extends StatefulWidget {
-  const _Switches({
-    super.key,
-  });
+  const _Switches();
 
   @override
   State<_Switches> createState() => _SwitchesState();
